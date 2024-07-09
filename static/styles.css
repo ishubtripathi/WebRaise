@@ -4,7 +4,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #f4f4f4;
     margin: 0;
 }
@@ -50,4 +50,161 @@ button:hover {
 
 #result {
     margin-top: 20px;
+}
+
+
+#progressChart {
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative; /* Ensure position for animations */
+    animation: modal-anim 0.3s ease; /* Fade-in animation */
+}
+
+@keyframes modal-anim {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styling the congratulations message */
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.modal-content .congrats-gif {
+    margin-bottom: 20px; /* Adjust spacing */
+}
+
+.modal-content .congrats-message {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-content .details {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Green button styling */
+.green-button {
+    background-color: #28a745; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.green-button:hover {
+    background-color: #218838; /* Darker shade of green on hover */
+}
+
+#countContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+#successCount, #failureCount {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    text-align: center;
+}
+
+
+
+
+/* media queries */
+/* Responsive adjustments */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .green-button {
+        padding: 12px 24px;
+        font-size: 18px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #countContainer {
+        justify-content: space-between;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .green-button {
+        padding: 14px 28px;
+        font-size: 20px;
+    }
+    #countContainer {
+        margin-top: 20px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .green-button {
+        padding: 16px 32px;
+        font-size: 22px;
+    }
+    #countContainer {
+        justify-content: space-evenly;
+    }
 }

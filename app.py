@@ -16,7 +16,7 @@ user_agents = [
     'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
 ]
 
-scraperapi_key = 'your_scraperapi_key_here'  # Replace with your ScraperAPI key
+scraperapi_key = '39ffcb4f2f4089fb18535f77b48de698'  # Replace with your ScraperAPI key
 
 @socketio.on('start_traffic')
 def handle_start_traffic(data):

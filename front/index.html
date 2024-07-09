@@ -1,29 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Traffic Booster</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--=============== BOXICONS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/static/nav.css" />
     <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <h1>Website Traffic Booster</h1>
-    <form id="trafficForm">
-        <label for="url">URL:</label>
-        <input type="text" id="url" name="url" required>
-        <label for="n">Number of Visits:</label>
-        <input type="number" id="n" name="n" required>
-        <button type="submit" id="boostButton">Boost Traffic</button>
-    </form>
-    <div id="progress">
-        <p>Progress:</p>
-        <canvas id="progressChart"></canvas>
-        <div id="successCount">Success Count: 0</div>
-        <div id="failureCount">Failure Count: 0</div>
-    </div>
+    <title>Responsive bottom navigation</title>
+  </head>
+  <body>
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">Marlon</a>
 
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">
+                <i class="bx bx-home-alt nav__icon"></i>
+                <span class="nav__name">Home</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#about" class="nav__link">
+                <i class="bx bx-user nav__icon"></i>
+                <span class="nav__name">About</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#skills" class="nav__link">
+                <i class="bx bx-book-alt nav__icon"></i>
+                <span class="nav__name">Skills</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#portfolio" class="nav__link">
+                <i class="bx bx-briefcase-alt nav__icon"></i>
+                <span class="nav__name">Portfolio</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#contactme" class="nav__link">
+                <i class="bx bx-message-square-detail nav__icon"></i>
+                <span class="nav__name">Contactme</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <img src="assets/img/perfil.png" alt="" class="nav__img" />
+      </nav>
+    </header>
+
+    <main>
+      <!--=============== HOME ===============-->
+      <section class="container section section__height" id="home">
+        <h1>Website Traffic Booster</h1>
+        <form id="trafficForm">
+          <label for="url">URL:</label>
+          <input type="text" id="url" name="url" required />
+          <label for="n">Number of Visits:</label>
+          <input type="number" id="n" name="n" required />
+          <button type="submit" id="boostButton">Boost Traffic</button>
+        </form>
+        <div id="progress">
+          <p>Progress:</p>
+          <canvas id="progressChart"></canvas>
+          <div id="countContainer">
+            <div id="successCount">Success Count: 0</div>
+            <div id="failureCount">Failure Count: 0</div>
+          </div>
+        </div>
+
+        <!-- Modal structure -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="congrats-gif">
+              <img src="/static/tick.png" alt="Congratulations" width="110px" />
+            </p>
+            <p class="congrats-message">Congratulations!</p>
+            <p class="details">All visits have been successfully completed.</p>
+            <button class="green-button" id="closeModalBtn">Close</button>
+          </div>
+        </div>
+      </section>
+
+      <!--=============== ABOUT ===============-->
+      <section class="container section section__height" id="about">
+        <h2 class="section__title">About</h2>
+      </section>
+
+      <!--=============== SKILLS ===============-->
+      <section class="container section section__height" id="skills">
+        <h2 class="section__title">Skills</h2>
+      </section>
+
+      <!--=============== PORTFOLIO ===============-->
+      <section class="container section section__height" id="portfolio">
+        <h2 class="section__title">Portfolio</h2>
+      </section>
+
+      <!--=============== CONTACTME ===============-->
+      <section class="container section section__height" id="contactme">
+        <h2 class="section__title">Contactme</h2>
+      </section>
+    </main>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="/static/nav.js"></script>
+    <script src="/static/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/static/script.js"></script>
-</body>
+  </body>
 </html>
