@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template
 import requests
 from random import choice, randint
 import time
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__, template_folder='front')
+app.config['SECRET_KEY'] = 'your_secret_key_here'  # Replace with a secure secret key
+socketio = SocketIO(app)
 
 user_agents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
@@ -15,15 +18,10 @@ user_agents = [
 
 scraperapi_key = 'your_scraperapi_key_here'  # Replace with your ScraperAPI key
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/visit', methods=['POST'])
-def visit():
-    data = request.json
-    url = data.get('url')
-    n = int(data.get('n', 1))
+@socketio.on('start_traffic')
+def handle_start_traffic(data):
+    url = data['url']
+    n = int(data['n'])
 
     success_count = 0
     failure_count = 0
@@ -52,12 +50,13 @@ def visit():
         except requests.RequestException as e:
             failure_count += 1
 
-        time.sleep(randint(1, 5))
+        # Emit progress update to client after each visit
+        socketio.emit('progress_update', {'success_count': success_count, 'failure_count': failure_count})
+        socketio.sleep(1)  # Ensure socketio can process and send the message
 
-    return jsonify({
-        'success_count': success_count,
-        'failure_count': failure_count
-    })
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True)
