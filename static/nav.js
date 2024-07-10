@@ -16,7 +16,7 @@ function scrollActive(){
         }
     })
 }
-window.addEventListener('scroll', scrollActive)
+// window.addEventListener('scroll', scrollActive)
 
 
 /*=============== CHANGE BACKGROUND HEADER ===============*/

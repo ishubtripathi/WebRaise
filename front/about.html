@@ -22,14 +22,14 @@
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="#home" class="nav__link active-link">
+              <a href="/front/index.html" class="nav__link active-link">
                 <i class="bx bx-home-alt nav__icon"></i>
                 <span class="nav__name">Home</span>
               </a>
             </li>
 
             <li class="nav__item">
-              <a href="/front/about.html" class="nav__link">
+              <a href="#about" class="nav__link">
                 <i class="bx bx-user nav__icon"></i>
                 <span class="nav__name">About</span>
               </a>
@@ -63,37 +63,9 @@
     </header>
 
     <main>
-      <!--=============== HOME ===============-->
-      <section class="container section section__height" id="home">
-        <h1>Website Traffic Booster</h1>
-        <form id="trafficForm">
-          <label for="url">URL:</label>
-          <input type="text" id="url" name="url" required />
-          <label for="n">Number of Visits:</label>
-          <input type="number" id="n" name="n" required />
-          <button type="submit" id="boostButton">Boost Traffic</button>
-        </form>
-        <div id="progress">
-          <p>Progress:</p>
-          <canvas id="progressChart"></canvas>
-          <div id="countContainer">
-            <div id="successCount">Success Count: 0</div>
-            <div id="failureCount">Failure Count: 0</div>
-          </div>
-        </div>
-
-        <!-- Modal structure -->
-        <div id="myModal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p class="congrats-gif">
-              <img src="/static/tick.png" alt="Congratulations" width="110px" />
-            </p>
-            <p class="congrats-message">Congratulations!</p>
-            <p class="details">All visits have been successfully completed.</p>
-            <button class="green-button" id="closeModalBtn">Close</button>
-          </div>
-        </div>
+      <!--=============== ABOUT ===============-->
+      <section class="container section section__height" id="about">
+        <h2 class="section__title">About</h2>
       </section>
     </main>
 

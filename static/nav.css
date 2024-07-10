@@ -161,11 +161,11 @@ img {
 }
 
 /*Active link*/
-.active-link {
+/* .active-link {
   position: relative;
   color: var(--first-color);
   transition: .3s;
-}
+} */
 
 /* Minimalist design, active link */
 .active-link::before{
