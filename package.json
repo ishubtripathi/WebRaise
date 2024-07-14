@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "chart.js": "^4.4.3",
+    "lucide-react": "^0.408.0",
+    "recharts": "^2.12.7",
+    "shadcn": "^1.0.0",
+    "socket.io-client": "^4.7.5",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  }
+}

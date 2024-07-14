@@ -5,17 +5,54 @@ document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('myModal');
     const modalContent = document.querySelector('.modal-content');
     const closeBtn = document.querySelector('.close');
+    const viewsCount = document.getElementById('viewsCount');
+    const clicksCount = document.getElementById('clicksCount');
+    const growthCtx = document.getElementById('growthChart').getContext('2d');
 
     // Establish WebSocket connection
     const socket = io.connect(window.location.origin);
 
-    // Initialize the chart
-    const ctx = document.getElementById('progressChart').getContext('2d');
-    const progressChart = new Chart(ctx, chartConfig);
+    // Initialize progress chart
+    const progressCtx = document.getElementById('progressChart').getContext('2d');
+    const progressChart = new Chart(progressCtx, chartConfig);
+
+    // Initialize growth chart
+    const growthChart = new Chart(growthCtx, {
+        type: 'line',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Growth',
+                data: [],
+                borderColor: 'blue',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Visit Number'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Count'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
     let totalVisits = 0;
     let successCount = 0;
     let failureCount = 0;
+    let views = 0;
+    let clicks = 0;
 
     // Function to validate URL
     function isValidUrl(url) {
@@ -72,6 +109,17 @@ document.addEventListener('DOMContentLoaded', function () {
         successCountDiv.textContent = `Success Count: ${data.success_count}`;
         failureCountDiv.textContent = `Failure Count: ${data.failure_count}`;
 
+        // Update views and clicks randomly for demonstration
+        views += Math.floor(Math.random() * 10);
+        clicks += Math.floor(Math.random() * 5);
+        viewsCount.textContent = views;
+        clicksCount.textContent = clicks;
+
+        // Update growth chart
+        growthChart.data.labels.push(visitNumber);
+        growthChart.data.datasets[0].data.push(views);
+        growthChart.update();
+
         // Check if all visits are successful
         if (data.success_count + data.failure_count === totalVisits && data.success_count === totalVisits) {
             // Show congratulations message
@@ -80,19 +128,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Close the modal
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
+    closeBtn.onclick = function () {
+        modal.style.display = 'none';
     }
 
     // Close modal when clicking outside modal
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target === modal) {
-            modal.style.display = "none";
+            modal.style.display = 'none';
         }
     }
 });
 
-// Chart configuration
+// Chart configuration for progress chart
 const chartConfig = {
     type: 'line',
     data: {
